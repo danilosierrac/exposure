@@ -1,0 +1,140 @@
+    <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+<title>Pay me in Exposure</title>
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+
+
+<script type="text/javascript">
+
+$(document).ready(function(){
+
+    $('#button').click(function(e) {  
+        var inputvalue = $("#input").val();
+        var inputvalue2 = $("#input2").val();
+        window.location.replace(" http://www.paypal.me/"+inputvalue+"/"+inputvalue2);
+
+    });
+});
+</script> 
+
+<meta name="description" content="The simplest payment processing system">
+  <meta name="author" content="Exposure">
+  <meta property="og:title" content="Exposure">
+  <meta property="og:description" content="A simple payment processing system that allows you to pay in Exposure">
+  <meta property="og:url" content="https://exposure.money/">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="exposure.png">
+
+  <meta name="twitter:site" content="@unsplash">
+  <meta name="twitter:title" content="Unsplash Source">
+  <meta name="twitter:description" content="A simple API for embedding free high-resolution photos from Unsplash.">
+  <meta name="twitter:url" content="https://source.unsplash.com/">
+  <meta name="twitter:card" content="photo">
+  <meta name="twitter:image" content="exposure.png" />
+
+<style>
+body {
+  font-family: -apple-system, "San Francisco", BlinkMacSystemFont, “Segoe UI”, Roboto, Helvetica, Arial, sans-serif, “Apple Color Emoji”, “Segoe UI Emoji”, “Segoe UI Symbol”; 
+  max-width: 80%; 
+  padding-top: 100px;
+  margin: auto;
+  font-size: 1.5em; 
+}
+
+input[type="text"] {
+  padding: 10px;
+  border: none;
+  text-align: center;
+  border-bottom: solid 2px #c9c9c9;
+  transition: border 0.3s
+}
+
+  input[type="text"]:focus,
+  input[type="text"].focus {
+  border-bottom: solid 2px #969696;
+  font-size: 1em;
+}
+
+  button 
+  {
+    background-color: #666;
+    border: none;
+    color: white;
+    padding: 12px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+  }
+
+hr 
+{
+   border: 0;
+    height: 2px;
+    background: #333;
+    background-color: #333;
+}
+
+h1{
+  font-size: 2em;
+}
+
+</style>
+
+</head>
+<body>
+      <h1><a href="#">Pay me in Exposure</a></h1>
+      <p>The simplest, minimal payment system that allows creatives to get paid in Exposure</p>
+      <hr>
+      <br>
+      <h2>Your payment</h2>
+      <p>I hereby want to pay
+          <input type="text" placeholder="Your payee username" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Your payee username' "id="input"> the amount of
+       <input type="text" placeholder="Exposure amount" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Exposure amount' "id="input2"> Exposure.</p>
+       <br>
+       <button type="button" id="button">Pay with Exposure!</button>
+       <br>
+        </p>
+       <h2>Or</h2>
+       <p>simply type "paypal.me/userid/amount" and pay in real cash.
+      <hr>
+      <h2>Thank you for your business</h2>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+       <h2>Exchange rate</h2> 
+       <p>the exchange rate is 1 Exposure = 1 unit of your selected currency.</p>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <h2>C.R.E.A.M.</h2>
+      <p>Just send your paypal.me along with your Paypal.me user ID to the client, and the amount of "Exposure" you want to get for the work in conversation.</p>
+
+      <p>Exposure is built for creatives dealing with pesky potential clients who are trying to avoid paying normal currency. Simply input your paypal.me name and the amount you want to get paid in your local paypal currency and send this link to the client. Once they click, our masked domain will redirect them to your paypal.me page with the amount already input but the exposure domain on the top.</p>
+      <p>We make nothing out of this but a nice little statement: all work has to be financially compensated.</p>
+
+      <h2>Accept only cold hard Exposure.</h2>
+
+      <p>Made by <a href="http://mimosaagency.com/">mimosa agency</a> with parody intentions. We advocate for the fair payment of labor in the commonly agreed terms between client and provider that allows the provider to live of their work. We have no association wit Paypal.</p>
+
+</body>
+</html>
