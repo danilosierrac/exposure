@@ -10,11 +10,13 @@
 
 $(document).ready(function(){
 
-    $('#button').click(function(e) {  
-        var inputvalue = $("#input").val();
-        var inputvalue2 = $("#input2").val();
-        window.location.replace(" http://www.paypal.me/"+inputvalue+"/"+inputvalue2);
+    $('#button').click(function(e) {
+      var username = $("#input").val();
+      var amount = $("#input2").val();
 
+      var token = window.btoa(username + ':' + amount).replace(/\=*$/m, '');
+
+      $('.link').text('http://exposure.money/pay/'+token);
     });
 });
 </script> 
@@ -104,6 +106,9 @@ h1{
           <input type="text" placeholder="Exposure amount" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Exposure amount' "id="input2"> Exposure.</p>
        <br>
        <button type="button" id="button">Pay with Exposure!</button>
+
+       <pre class="link"></pre>
+
        <br>
       </p>
       <hr>

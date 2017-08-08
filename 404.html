@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <title>Pay me in Exposure</title>
+  <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+
+  <meta name="description" content="The simplest payment processing system">
+  <meta name="author" content="Exposure">
+  <meta property="og:title" content="Exposure">
+  <meta property="og:description" content="A simple, minimal payment processing system that allows you to pay in Exposure.">
+  <meta property="og:url" content="https://exposure.money/">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="exposure.png">
+
+  <meta name="twitter:site" content="@mimosaagency">
+  <meta name="twitter:title" content="Exposure">
+  <meta name="twitter:description" content="The simplest payment processing system.">
+  <meta name="twitter:url" content="https://exposure.money/">
+  <meta name="twitter:card" content="photo">
+  <meta name="twitter:image src" content="https://github.com/danilosierrac/exposure/blob/master/exposure.png?raw=true" />
+
+  <head profile="http://www.w3.org/2005/10/profile">
+  <link rel="icon" 
+      type="image/png" 
+      href="exposure.ico">
+
+<style>
+body {
+  font-family: -apple-system, "San Francisco", BlinkMacSystemFont, “Segoe UI”, Roboto, Helvetica, Arial, sans-serif, “Apple Color Emoji”, “Segoe UI Emoji”, “Segoe UI Symbol”; 
+  max-width: 80%; 
+  padding-top: 70px;
+  margin: auto;
+  font-size: 1.5em; 
+}
+
+input[type="text"] {
+  padding: 10px;
+  border: none;
+  text-align: center;
+  border-bottom: solid 2px #c9c9c9;
+  transition: border 0.3s
+}
+
+  input[type="text"]:focus,
+  input[type="text"].focus {
+  border-bottom: solid 2px #969696;
+  font-size: 1em;
+}
+
+  button 
+  {
+    background-color: #777;
+    border: none;
+    color: white;
+    padding: 12px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 0px 2px;
+    cursor: pointer;
+  }
+
+hr 
+{
+   border: 0;
+    height: 2px;
+    background: #333;
+    background-color: #333;
+}
+
+h1{
+  font-size: 2em;
+}
+
+
+
+</style>
+</head>
+
+<body>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+  <div id="error" style="display:none;">
+    <h1>Whoops! Something went wrong with that link</h1>
+    <!-- TODO more explaination -->
+  </div>
+
+  <div id="pay" style="display: none;">
+    <h1>The simplest, minimal payment system that allows creatives to get paid in Exposure. 📈👍</h1>
+
+    <p>Just click the button below to pay <strong class="username">username</strong> the amount of <strong class="amount">0</strong> exposure!</p>
+
+    <button type="button" id="button">Pay with Exposure!</button>
+
+    <div style="margin-top: 30vh;">
+      <hr>
+      <p>Why the paypal link?</p>
+      <!-- TODO -->
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    function showError() {
+      $("#error").show();
+      return false;
+    }
+
+    function showPaymentMessage(username, amount) {
+      $('#pay').find('.username').text(username);
+      $('#pay').find('.amount').text(amount);
+
+      $('#pay').show();
+    }
+
+    $(document).ready(function(){
+      var path = window.location.pathname.split('/');
+      var pathLength = path.length;
+
+      // Check we're meaning to pay:
+      if (pathLength < 2 || path[pathLength - 2] !== 'pay') {
+        return showError();
+      }
+
+      // Get the token:
+      var token = path[pathLength - 1];
+      var username, amount;
+
+      try {
+        var decoded = window.atob(token);
+        var decodedParts = decoded.split(':');
+
+        username = decodedParts[0];
+        amount = decodedParts[1];
+      } catch(e) {
+        return showError();
+      }
+
+      if (!username || !amount) {
+        return showError();
+      }
+
+      showPaymentMessage(username, amount);
+
+      $('#button').click(function(e) {
+        var username = $(".username").text();
+        var amount = $(".amount").text();
+        window.location = "https://www.paypal.me/"+username+"/"+amount;
+      });
+    });
+  </script>
+</body>
+
+</html>
