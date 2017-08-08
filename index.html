@@ -10,11 +10,13 @@
 
 $(document).ready(function(){
 
-    $('#button').click(function(e) {  
-        var inputvalue = $("#input").val();
-        var inputvalue2 = $("#input2").val();
-        window.location.replace(" http://www.paypal.me/"+inputvalue+"/"+inputvalue2);
+    $('#button').click(function(e) {
+      var username = $("#input").val();
+      var amount = $("#input2").val();
 
+      var token = window.btoa(username + ':' + amount).replace(/\=*$/m, '');
+
+      $('.link').text('http://exposure.money/pay/'+token);
     });
 });
 </script> 
@@ -131,9 +133,19 @@ h1{
       <hr>
       <h2>Your payment</h2>
       <p>I hereby want to pay
+<<<<<<< HEAD
         <input type="text" placeholder="Username of Payee" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Username of Payee' "id="input">the amount of
         <input type="text" placeholder="Exposure Amount" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Exposure Amount' "id="input2"> Exposure.</p>
        <button type="button" id="button">Pay with Exposure</button>
+=======
+        <input type="text" placeholder="Username of Payee" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Username of Payee' "id="input"> the amount of
+        <input type="text" placeholder="Exposure amount" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Exposure amount' "id="input2"> Exposure.</p>
+       <br>
+       <button type="button" id="button">Pay with Exposure!</button>
+
+       <pre class="link"></pre>
+
+>>>>>>> origin/master
        <br>
       </p>
       <hr>
