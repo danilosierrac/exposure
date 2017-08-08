@@ -43,27 +43,45 @@ $(document).ready(function(){
 body {
   font-family: -apple-system, "San Francisco", BlinkMacSystemFont, “Segoe UI”, Roboto, Helvetica, Arial, sans-serif, “Apple Color Emoji”, “Segoe UI Emoji”, “Segoe UI Symbol”; 
   max-width: 80%; 
-  padding-top: 70px;
+  padding-top: 0px;
   margin: auto;
-  font-size: 1.5em; 
+  font-size: 2em;
+  line-height: 1.5em; 
 }
 
-input[type="text"] {
-  padding: 10px;
+input[type="text"] 
+{
+  margin-top: 20px;
+  margin-top: 20px;
   border: none;
-  text-align: center;
-  border-bottom: solid 2px #c9c9c9;
-  transition: border 0.3s
+  text-align: left;
+  border-bottom: solid 2px #FF2D55;
+  transition: border 0.3s;
+  color: #FF2D55;
+}
+
+input[type="text"]:enabled,
+  input[type="text"].enabled {
+  border-bottom: solid 2px #FF2D55;
+  font-size: 1em;
+  color: #FF2D55;
 }
 
   input[type="text"]:focus,
   input[type="text"].focus {
-  border-bottom: solid 2px #969696;
+  border-bottom: solid 2px #FF2D55;
   font-size: 1em;
+  color: #FF2D55;
 }
 
-  button 
-  {
+input[type="text"]:blur,
+  input[type="text"].blur {
+  border-bottom: solid 2px #FF2D55;
+  font-size: 1em;
+  color: #FF2D55;
+}
+
+button   {
     background-color: #777;
     border: none;
     color: white;
@@ -71,9 +89,8 @@ input[type="text"] {
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
-    margin: 0px 2px;
-    cursor: pointer;
+    font-size: 20px;
+    margin-top: 0px;
   }
 
 hr 
@@ -85,25 +102,32 @@ hr
 }
 
 h1{
-  font-size: 2em;
+  font-size: 2.5em;
+  color: #FF2D55;
+  text-decoration: underline;
 }
+@media (max-width: 600px) {
+  p{font-size:20pt;
+  line-height:20pt;
+  }
+ body{
+  max-width: 90%;
+ }
 
-
+}
 
 </style>
 
 </head>
 <body>
-      <h1><a href="#">Exposure</a></h1>
+      <h1>Exposure</h1>
       <p>The simplest, minimal payment system that allows creatives to get paid in Exposure. 📈👍</p>
       <hr>
-      <br>
       <h2>Your payment</h2>
       <p>I hereby want to pay
-        <input type="text" placeholder="Username of Payee" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Username of Payee' "id="input"> the amount of
-        <input type="text" placeholder="Exposure amount" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Exposure amount' "id="input2"> Exposure.</p>
-       <br>
-       <button type="button" id="button">Pay with Exposure!</button>
+        <input type="text" placeholder="Username of Payee" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Username of Payee' "id="input">the amount of
+        <input type="text" placeholder="Exposure Amount" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Exposure Amount' "id="input2"> Exposure.</p>
+       <button type="button" id="button">Pay with Exposure</button>
        <br>
       </p>
       <hr>
