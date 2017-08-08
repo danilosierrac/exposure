@@ -48,13 +48,12 @@ body {
   padding-top: 0px;
   margin: auto;
   font-size: 2em;
-  line-height: 1.5em; 
+/*  line-height: 1em; */
 }
 
 input[type="text"] 
 {
   margin-top: 20px;
-  margin-bottom: 20px;
   border: none;
   text-align: left;
   border-bottom: solid 2px #FF2D55;
@@ -65,7 +64,6 @@ input[type="text"]
 input[type="text"]:enabled,
   input[type="text"].enabled {
   margin-top: 20px;
-  margin-bottom: 20px;
   border-bottom: solid 2px #FF2D55;
   font-size: 1em;
   color: #FF2D55;
@@ -75,7 +73,7 @@ input[type="text"]:enabled,
   input[type="text"].focus {
 
   margin-top: 20px;
-  margin-bottom: 20px;border-bottom: solid 2px #FF2D55;
+  border-bottom: solid 2px #FF2D55;
   font-size: 1em;
   color: #FF2D55;
 }
@@ -124,6 +122,10 @@ h1{
  }
 }
 
+pre{
+  color: #FF2D55;;
+}
+
 </style>
 
 </head>
@@ -131,18 +133,18 @@ h1{
       <h1>Exposure</h1>
       <p>The simplest, minimal payment system that allows creatives to get paid in Exposure. 📈👍</p>
       <hr>
-      <h2>Your payment</h2>
-      <p>I hereby want to pay
-        <input type="text" placeholder="Username of Payee" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Username of Payee' "id="input">the amount of
-        <input type="text" placeholder="Exposure Amount" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Exposure Amount' "id="input2"> Exposure.</p>
-       <button type="button" id="button">Pay with Exposure</button>
-
-
+      <h2>Generate your payment link</h2>
+      <p>I  want to receive the amount of: <input type="text" placeholder="Insert Amount" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Insert Amount' "id="input2"> Exposure. 
+      <br>in my Paypal account with user ID:
+        <input type="text" placeholder="Username of Payee" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Username of Payee' "id="input">
+        </p>
+       <button type="link" id="button">Generate Exposure link</button>
        <pre class="link"></pre>
+       <p>Now Copy this link and send it to the customer who wants to pay you in Exposure</p>
        <br>
       </p>
-      <hr>
       <h2>Thank you for your business!</h2>
+      <hr>
       <br>
       <br>
       <br>
