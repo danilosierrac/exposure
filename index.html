@@ -22,6 +22,7 @@ $(document).ready(function(){
 </script> 
 
 <meta name="description" content="The simplest payment processing system">
+<!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
   <meta name="author" content="Exposure"/>
   <meta property="og:title" content="Exposure">
   <meta property="og:description" content="A simple, minimal payment processing system that allows you to pay in Exposure."/>
@@ -45,59 +46,107 @@ $(document).ready(function(){
 body {
   font-family: -apple-system, "San Francisco", BlinkMacSystemFont, “Segoe UI”, Roboto, Helvetica, Arial, sans-serif, “Apple Color Emoji”, “Segoe UI Emoji”, “Segoe UI Symbol”; 
   max-width: 80%; 
-  padding-top: 30px;
-  margin: auto;
-  font-size: 1.2em;
-  line-height: 1em; 
+  margin-left: 10%;
+  word-wrap: break-word;
 }
 
 input[type="text"] 
 {
-  margin-top: 20px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
   border: none;
   text-align: left;
-  border-bottom: solid 2px #FF2D55;
+  border-bottom: dashed 5px #FF2D55;
   transition: border 0.3s;
   color: #FF2D55;
+  word-wrap: break-word;
+  box-sizing : border-box;
+  -moz-box-shadow: 4px 3px 0px 0px #2c292e;
+  -webkit-box-shadow: 4px 3px 0px 0px #2c292e;
+  box-shadow: 4px 3px 0px 0px #2c292e;
+  background-color: #ededed;
 }
 
 input[type="text"]:enabled,
   input[type="text"].enabled {
-  margin-top: 20px;
-  border-bottom: solid 2px #FF2D55;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  border-bottom: dashed 5px #FF2D55;
   font-size: 1em;
   color: #FF2D55;
+  word-wrap: break-word;
+  box-sizing : border-box;
+  -moz-box-shadow: 4px 3px 0px 0px #2c292e;
+  -webkit-box-shadow: 4px 3px 0px 0px #2c292e;
+  box-shadow: 4px 3px 0px 0px #2c292e;
+  background-color: #ededed;
 }
 
   input[type="text"]:focus,
   input[type="text"].focus {
 
-  margin-top: 20px;
-  border-bottom: solid 2px #FF2D55;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  border-bottom: dashed 5px #FF2D55;
   font-size: 1em;
   color: #FF2D55;
+  word-wrap: break-word;
+  box-sizing : border-box;
+  -moz-box-shadow: 4px 3px 0px 0px #2c292e;
+  -webkit-box-shadow: 4px 3px 0px 0px #2c292e;
+  box-shadow: 4px 3px 0px 0px #2c292e;
+  background-color: #ededed;
 }
 
 input[type="text"]:blur,
   input[type="text"].blur {
-  margin-top: 20px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
   margin-bottom: 20px;
-  border-bottom: solid 2px #FF2D55;
-  font-size: 1em;
+  border-bottom: solid 5px #FF2D55;
+  font-size: 1.8em;
   color: #FF2D55;
+  word-wrap: break-word;
+  box-sizing : border-box;
+  background-color: #ededed;
 }
 
-button   {
-    background-color: #777;
-    border: none;
-    color: white;
-    padding: 12px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 20px;
-    margin-top: 0px;
-  }
+Button {
+  -moz-box-shadow: 4px 3px 0px 0px #2c292e;
+  -webkit-box-shadow: 4px 3px 0px 0px #2c292e;
+  box-shadow: 4px 3px 0px 0px #2c292e;
+  background-color:#ff2d54;
+  display:inline-block;
+  cursor:pointer;
+  color:#ffffff;
+  font-family:Arial;
+  font-size:17px;
+  padding:16px 31px;
+  text-decoration:none;
+  border: none;
+  font-size: 3em;
+}
+
+Button:hover {
+  background-color:#ff2d54;
+}
+Button:active {
+  position:relative;
+  top:1px;
+}
+
 
 hr 
 {
@@ -108,56 +157,115 @@ hr
 }
 
 h1{
-  font-size: 2em;
+  font-size: 8em;
   color: #FF2D55;
   text-decoration: underline;
 }
 
-pre{
-  color: #FF2D55;;
+h2 {
+  font-size: 4em;
 }
+
+p {
+  font-size: 3em;
+}
+
+pre{
+  margin-top: 30px;
+  padding: 20px 10px 20px 10px;
+  color: #FF2D55;
+  background-color: transparent;
+  background-color: #ededed;
+  outline: 0;
+  border-radius: 0;
+  resize: both;
+  overflow: auto;
+  font-size: 3em;
+  border-bottom: dashed 5px #FF2D55;
+  box-sizing : border-box;
+  -moz-box-shadow: 4px 3px 0px 0px #2c292e;
+  -webkit-box-shadow: 4px 3px 0px 0px #2c292e;
+  box-shadow: 4px 3px 0px 0px #2c292e;
+}
+
+div {
+/*  padding-top: 2%;*/
+  padding-bottom: 5%;
+  margin: auto;
+}
+
 
 </style>
 
 </head>
 <body>
+      <p style= "text-align:right">🤑🔊</p>
+      <div>
       <h1>Exposure</h1>
-      <p>The simplest, minimal payment system that allows creatives to get paid in Exposure. 📈👍</p>
-      <hr>
+      <h2>The simplest, minimal payment system that allows creatives to get paid in Exposure. 📈👍</h2>
+      </div>
+
+
+      <h1>Get paid</h1>
       <h2>1. Generate your payment link</h2>
-      <p><strong>Amount of money you want in Exposure: <input type="text" placeholder="Insert Amount $$$" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Insert Amount $$$' "id="input2">
+      <p><strong>Amount of money you want in Exposure:
+       <br>
+        <input type="text" placeholder="Insert Amount $$$" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Insert Amount $$$' "id="input2">
       <br>Paypal user ID where the money will go to:
-        <input type="text" placeholder="Paypal.me/myuserID" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Paypal.me/myuserID' "id="input"></strong><br><br>
+        <br>
+        <input type="text" placeholder="Paypal.me/myuserID" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Paypal.me/myuserID' "id="input"></strong>
+        <br>
         You only need to input the user id part, your link will appear below the button
         </p>
        <button type="link" id="button">Generate Exposure link ↓</button>
-       <pre class="link"></pre>
+       <pre class="link" >Your link will appear here!</pre>
+       
        <h2>2. Copy and test the link on another tab</h2>
+       
        <p>You can try this link in another tab before you send it. It has to redirect to a checkout page which later redirects to your Paypal.me page including the amount you want.</p>
        <h2>3. Send the link!</h2>
+       
        <p>Now your prospective client can pay you in Exposure that converts to real money. Thank you for using Exposure!</p>
-      <hr>
-      <br><br><br><br><br><br>
-      <h2>How it Works</h2>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <h1>How it Works</h1>
+      
       <p>Your paypal.me user ID is your Exposure user ID (The one right after your link paypal.me/youruserID).</p>
+      
       <p>Just input your user ID along with the amount of money in Exposure the work is worth in money to generate a payment link. We handle the rest!</p>
+      
       <h2>Exchange rate</h2> 
+      
       <p>Exposure's exchange rate is 1 Exposure = 1 unit of your selected Paypal currency. Forever.</p>
 
       <h2>Don't have a Paypal ID?</h2>
+      
       <p><a href="https://www.paypal.me/">This is how you can get paid with a Paypal.me user ID</a></p>
+      
       <p>Exposure is built for creatives tired of dealing with the exchange rate of Exposure in potential projects and markets.</p>
+      
       <p>Simply send your paypal.me ID and the amount of Exposure you want to get paid to your client. Our redirection tool will convert your Exposure into real cash.</p>
+      
       <h2>Something's wrong?</h2>
+      
       <p>Then send them our preferred payment method:💸💸💸💸💸💸💸💸💸💸</p>
+      
       <h2>Why</h2>
+      
       <p>because <a href="https://www.youtube.com/watch?v=PBwAxmrE194">C.R.E.A.M.</a></p>
       <h2>Accept only cold hard Exposure or cash. Ideally in advance...</h2>
-      <hr>
-      <h2>Disclaimer</h2> 
+      
+      <div>
+      <h1>Disclaimer</h1> 
       <p>We make nothing out of this but disrupt the Exposure market. all work has to be financially compensated.</p>
+      
       <p>We have no association wit Paypal. Don't @ us.</p>
+      
       <p>Made by <a href="http://mimosaagency.com/">mimosa agency</a> with parody intentions. We advocate for the fair payment of labor in the commonly agreed terms between client and provider that allows the provider to live of their labor.</p>
-      <br>
+      </div>
 </body>
 </html>
