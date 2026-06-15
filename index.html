@@ -30,22 +30,13 @@
 </head>
 
 <body>
-  <!-- Reusable flat-geometric motifs -->
-  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <!-- Organic distortion filter for the kinetic type -->
+  <svg class="kfilter" aria-hidden="true">
     <defs>
-      <g id="bloom">
-        <circle cx="50" cy="18" r="15" /><circle cx="50" cy="82" r="15" />
-        <circle cx="18" cy="50" r="15" /><circle cx="82" cy="50" r="15" />
-        <circle cx="27" cy="27" r="15" /><circle cx="73" cy="27" r="15" />
-        <circle cx="27" cy="73" r="15" /><circle cx="73" cy="73" r="15" />
-      </g>
-      <g id="burst">
-        <path d="M50 4 58 38 92 30 66 52 88 80 54 66 50 96 46 66 12 80 34 52 8 30 42 38Z" />
-      </g>
-      <g id="petal">
-        <ellipse cx="50" cy="22" rx="13" ry="22" /><ellipse cx="50" cy="78" rx="13" ry="22" />
-        <ellipse cx="22" cy="50" rx="22" ry="13" /><ellipse cx="78" cy="50" rx="22" ry="13" />
-      </g>
+      <filter id="liquid" x="-12%" y="-40%" width="124%" height="180%" color-interpolation-filters="sRGB">
+        <feTurbulence type="fractalNoise" baseFrequency="0.009 0.014" numOctaves="2" seed="4" result="noise" />
+        <feDisplacementMap id="kdisp" in="SourceGraphic" in2="noise" scale="0" xChannelSelector="R" yChannelSelector="G" />
+      </filter>
     </defs>
   </svg>
 
@@ -54,23 +45,21 @@
       <span class="mark">Exposure</span>
       <span class="caption">exposure.money</span>
     </header>
+  </div>
 
-    <!-- Masthead motif grid -->
-    <div class="tiles" aria-hidden="true">
-      <div class="tile marigold"><svg viewBox="0 0 100 100"><use href="#bloom" fill="#ff2d55"/><circle cx="50" cy="50" r="20" fill="#ff2d55"/><circle cx="50" cy="50" r="9" fill="#ffb12e"/></svg></div>
-      <div class="tile paper"></div>
-      <div class="tile blue"><svg viewBox="0 0 100 100"><use href="#petal" fill="#9fc0ff"/><use href="#burst" fill="#2f5bea"/></svg></div>
-      <div class="tile hotpink hide-sm"><svg viewBox="0 0 100 100"><use href="#petal" fill="#ff2d55"/><circle cx="50" cy="50" r="14" fill="#ffb12e"/></svg></div>
-      <div class="tile green"><svg viewBox="0 0 100 100"><use href="#bloom" fill="#ffb12e"/><circle cx="50" cy="50" r="14" fill="#ff2d55"/></svg></div>
-      <div class="tile pink hide-sm"><svg viewBox="0 0 100 100"><use href="#burst" fill="#ffb12e"/></svg></div>
+  <!-- Kinetic type hero — drag to fling, scroll to ripple -->
+  <h1 class="visually-hidden">Exposure — a payment system for creatives tired of being paid in exposure</h1>
+  <div class="kinetic" aria-hidden="true">
+    <div class="kinetic__track" id="ktrack">
+      <span class="kinetic__word">Exposure</span><span class="kinetic__sep">·</span><span class="kinetic__word accent">Paid in exposure</span><span class="kinetic__sep">·</span><span class="kinetic__word">1&nbsp;Exposure&nbsp;=&nbsp;$1</span><span class="kinetic__sep">·</span><span class="kinetic__word accent">Forever</span><span class="kinetic__sep">·</span><span class="kinetic__word">Exposure</span><span class="kinetic__sep">·</span><span class="kinetic__word accent">Paid in exposure</span><span class="kinetic__sep">·</span><span class="kinetic__word">1&nbsp;Exposure&nbsp;=&nbsp;$1</span><span class="kinetic__sep">·</span><span class="kinetic__word accent">Forever</span><span class="kinetic__sep">·</span>
     </div>
+  </div>
 
-    <!-- Hero -->
+  <div class="wrap">
+    <!-- Hero copy -->
     <section class="hero">
-      <div class="hero-row">
-        <h1 class="display">Exposure</h1>
-        <p class="lede">A payment system for creatives who are tired of being paid in&nbsp;exposure.</p>
-      </div>
+      <p class="lede">A payment system for creatives who are tired of being paid in&nbsp;exposure.</p>
+      <p class="caption drag-hint">↔ Drag the headline. Scroll the page.</p>
     </section>
 
     <!-- Generator -->
@@ -121,7 +110,14 @@
       <h3>Why</h3>
       <p>Because <a href="https://www.youtube.com/watch?v=PBwAxmrE194" target="_blank" rel="noopener">C.R.E.A.M.</a> Accept only cold hard Exposure or cash — ideally in advance.</p>
     </section>
+  </div>
 
+  <!-- Ambient kinetic divider (CSS only) -->
+  <div class="kstrip" aria-hidden="true">
+    <div class="kstrip__row">Exposure&nbsp;·&nbsp;Exposure&nbsp;·&nbsp;Exposure&nbsp;·&nbsp;Exposure&nbsp;·&nbsp;Exposure&nbsp;·&nbsp;Exposure&nbsp;·&nbsp;Exposure&nbsp;·&nbsp;Exposure&nbsp;·&nbsp;Exposure&nbsp;·&nbsp;Exposure&nbsp;·&nbsp;Exposure&nbsp;·&nbsp;Exposure&nbsp;·&nbsp;</div>
+  </div>
+
+  <div class="wrap">
     <!-- Disclaimer -->
     <footer class="disclaimer">
       <h2 class="display">Disclaimer</h2>
@@ -132,6 +128,7 @@
     </footer>
   </div>
 
+  <!-- Link generator -->
   <script>
     (function () {
       var amountEl = document.getElementById("amount");
@@ -164,6 +161,81 @@
           if (e.key === "Enter") generate();
         });
       });
+    })();
+  </script>
+
+  <!-- Kinetic type: infinite drift, drag-to-fling inertia, velocity-driven liquid warp -->
+  <script>
+    (function () {
+      var surf = document.querySelector(".kinetic");
+      if (!surf) return;
+      var track = document.getElementById("ktrack");
+      var disp = document.getElementById("kdisp");
+      var reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+      // Duplicate the run once so the loop is seamless.
+      track.innerHTML += track.innerHTML;
+
+      var half = 0;
+      function measure() { half = track.scrollWidth / 2; }
+      measure();
+      window.addEventListener("resize", measure);
+      if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(measure);
+      }
+
+      // Reduced motion: hold still with one gentle, frozen warp.
+      if (reduce.matches) {
+        if (disp) disp.setAttribute("scale", "5");
+        return;
+      }
+
+      var x = 0, vx = 0, dragging = false, lastX = 0, lastDx = 0;
+      var lastScroll = window.scrollY;
+      var BASE = -0.6;   // constant idle drift (px/frame)
+      var MAXD = 55;     // max displacement (px)
+
+      surf.addEventListener("pointerdown", function (e) {
+        dragging = true; lastX = e.clientX; lastDx = 0;
+        surf.classList.add("grabbing");
+        try { surf.setPointerCapture(e.pointerId); } catch (_) {}
+      });
+      surf.addEventListener("pointermove", function (e) {
+        if (!dragging) return;
+        var dx = e.clientX - lastX;
+        lastX = e.clientX; lastDx = dx; x += dx;
+      });
+      function release() {
+        if (!dragging) return;
+        dragging = false; vx = lastDx;     // carry the throw
+        surf.classList.remove("grabbing");
+      }
+      surf.addEventListener("pointerup", release);
+      surf.addEventListener("pointercancel", release);
+
+      // Page scroll ripples the type.
+      window.addEventListener("scroll", function () {
+        var y = window.scrollY;
+        vx += (lastScroll - y) * 0.25;
+        lastScroll = y;
+      }, { passive: true });
+
+      function tick() {
+        if (!dragging) {
+          vx += (BASE - vx) * 0.05;        // ease back toward idle drift
+          x += vx;
+        } else {
+          lastDx *= 0.6;                   // relax warp if a drag pauses
+        }
+        if (half > 0) { x %= half; if (x > 0) x -= half; }
+        track.style.transform = "translate3d(" + x.toFixed(2) + "px,0,0)";
+
+        var speed = dragging ? Math.abs(lastDx) : Math.abs(vx);
+        if (disp) disp.setAttribute("scale", Math.min(MAXD, speed * 6).toFixed(1));
+
+        requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
     })();
   </script>
 </body>

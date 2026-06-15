@@ -138,78 +138,123 @@ strong {
   border: 0;
 }
 
-/* ---- Decorative tile grid (masthead motif) ---- */
+/* ---- Kinetic type hero ---- */
 
-.tiles {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 10px;
-  margin: 40px 0 8px;
+.kfilter {
+  position: absolute;
+  width: 0;
+  height: 0;
 }
 
-.tile {
-  aspect-ratio: 1 / 1;
-  border-radius: 4px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
   overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
 }
 
-.tile svg {
-  width: 64%;
-  height: 64%;
-  display: block;
+.kinetic {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  margin: 30px 0 6px;
+  padding: 10px 0 16px;
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: pan-y;
 }
 
-.tile.empty {
-  background: transparent;
-}
-.tile.paper {
-  background: var(--paper-2);
-}
-.tile.pink {
-  background: var(--pink);
-}
-.tile.blue {
-  background: var(--blue);
-}
-.tile.marigold {
-  background: var(--marigold);
-}
-.tile.green {
-  background: var(--green);
-}
-.tile.hotpink {
-  background: var(--hotpink);
+.kinetic.grabbing {
+  cursor: grabbing;
 }
 
-@media (max-width: 560px) {
-  .tiles {
-    grid-template-columns: repeat(4, 1fr);
-    gap: 8px;
+.kinetic__track {
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+  will-change: transform;
+  filter: url(#liquid);
+}
+
+.kinetic__word {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: clamp(3rem, 11vw, 8.5rem);
+  line-height: 0.95;
+  letter-spacing: -0.025em;
+  padding: 0 0.06em;
+  color: var(--ink);
+}
+
+.kinetic__word.accent {
+  color: var(--pink);
+}
+
+.kinetic__sep {
+  font-family: var(--serif);
+  font-size: clamp(2rem, 7vw, 5rem);
+  color: var(--marigold);
+  padding: 0 0.16em;
+  transform: translateY(-0.12em);
+}
+
+.drag-hint {
+  margin-top: 0.6em;
+}
+
+/* ---- Ambient kinetic divider ---- */
+
+.kstrip {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-top: 80px;
+  overflow: hidden;
+  border-top: 1.5px solid var(--line);
+  border-bottom: 1.5px solid var(--line);
+  padding: 16px 0;
+}
+
+.kstrip__row {
+  display: inline-block;
+  white-space: nowrap;
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: clamp(1.5rem, 4vw, 2.6rem);
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  opacity: 0.14;
+  animation: kdrift 34s linear infinite;
+}
+
+@keyframes kdrift {
+  to {
+    transform: translateX(-50%);
   }
-  .tile.hide-sm {
-    display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .kstrip__row {
+    animation: none;
+  }
+  .kinetic {
+    cursor: default;
   }
 }
 
 /* ---- Hero ---- */
 
 .hero {
-  padding: 26px 0 10px;
+  padding: 22px 0 14px;
 }
 
-.hero .display {
-  margin-bottom: 0.18em;
-}
-
-.hero-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 24px 48px;
-  align-items: end;
-  justify-content: space-between;
+.hero .lede {
+  max-width: 26ch;
 }
 
 /* ---- Generator card ---- */
