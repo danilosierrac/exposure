@@ -1,13 +1,33 @@
+// Minimal static server for local testing.
+// Mirrors GitHub Pages: unknown paths fall through to 404.html,
+// which is what powers the client-side /pay/<token> route.
 var http = require('http');
 var fs = require('fs');
+var path = require('path');
 
-http.createServer(function(req, res) {
-    console.log(req.url);
+var TYPES = {
+  '.html': 'text/html; charset=utf-8',
+  '.css': 'text/css; charset=utf-8',
+  '.js': 'text/javascript; charset=utf-8',
+  '.png': 'image/png',
+  '.ico': 'image/x-icon'
+};
 
-    if (req.url === '/') {
-        res.end(fs.readFileSync('index.html'));
-        return;
+http.createServer(function (req, res) {
+  console.log(req.url);
+
+  var url = req.url.split('?')[0];
+  var file = url === '/' ? 'index.html' : path.normalize(url).replace(/^(\.\.[\/\\])+/, '').slice(1);
+
+  fs.readFile(file, function (err, data) {
+    if (err) {
+      res.writeHead(404, { 'Content-Type': TYPES['.html'] });
+      res.end(fs.readFileSync('404.html'));
+      return;
     }
-
-    res.end(fs.readFileSync('404.html'));
-}).listen(8000)
+    res.writeHead(200, { 'Content-Type': TYPES[path.extname(file)] || 'application/octet-stream' });
+    res.end(data);
+  });
+}).listen(8000, function () {
+  console.log('Serving on http://localhost:8000');
+});

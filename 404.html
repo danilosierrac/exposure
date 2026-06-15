@@ -1,248 +1,101 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
   <meta charset="utf-8" />
-  <title>Pay me in Exposure</title>
-  <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pay in Exposure</title>
 
-  <meta name="description" content="The simplest payment processing system">
-  <meta name="author" content="Exposure">
-  <meta property="og:title" content="Exposure">
-  <meta property="og:description" content="A simple, minimal payment processing system that allows you to pay in Exposure.">
-  <meta property="og:url" content="https://exposure.money/">
-  <meta property="og:type" content="website">
-  <meta property="og:image" content="exposure.png">
+  <meta name="description" content="The simplest, minimal payment system that lets you pay in Exposure." />
+  <meta name="author" content="Exposure" />
 
-  <meta name="twitter:site" content="@mimosaagency">
-  <meta name="twitter:title" content="Exposure">
-  <meta name="twitter:description" content="The simplest payment processing system.">
-  <meta name="twitter:url" content="https://exposure.money/">
-  <meta name="twitter:card" content="photo">
-  <meta name="twitter:image src" content="https://github.com/danilosierrac/exposure/blob/master/exposure.png?raw=true" />
+  <meta property="og:title" content="Exposure" />
+  <meta property="og:description" content="A simple, minimal payment system that lets you pay in Exposure." />
+  <meta property="og:url" content="https://exposure.money/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://github.com/danilosierrac/exposure/blob/master/exposure.png?raw=true" />
 
-  <head profile="https://www.w3.org/2005/10/profile">
-  <link rel="icon" 
-      type="image/png" 
-      href="exposure.ico">
-<link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
-<style>
-body {
-  font-family: -apple-system, "San Francisco", BlinkMacSystemFont, “Segoe UI”, Roboto, Helvetica, Arial, sans-serif, “Apple Color Emoji”, “Segoe UI Emoji”, “Segoe UI Symbol”; 
-  max-width: 80%; 
-  margin-left: 10%;
-  word-wrap: break-word;
-}
+  <meta name="twitter:site" content="@mimosaagency" />
+  <meta name="twitter:title" content="Exposure" />
+  <meta name="twitter:description" content="The simplest payment system." />
+  <meta name="twitter:url" content="https://exposure.money/" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://github.com/danilosierrac/exposure/blob/master/exposure.png?raw=true" />
 
-input[type="text"] 
-{
-  margin-top: 30px;
-  margin-bottom: 30px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  padding-left: 10px;
-  border: none;
-  text-align: left;
-  border-bottom: dashed 5px #FF2D55;
-  transition: border 0.3s;
-  color: #FF2D55;
-  word-wrap: break-word;
-  box-sizing : border-box;
-  -moz-box-shadow: 4px 3px 0px 0px #2c292e;
-  -webkit-box-shadow: 4px 3px 0px 0px #2c292e;
-  box-shadow: 4px 3px 0px 0px #2c292e;
-  background-color: #ededed;
-}
-
-input[type="text"]:enabled,
-  input[type="text"].enabled {
-  margin-top: 30px;
-  margin-bottom: 30px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  padding-left: 10px;
-  border-bottom: dashed 5px #FF2D55;
-  font-size: 1em;
-  color: #FF2D55;
-  word-wrap: break-word;
-  box-sizing : border-box;
-  -moz-box-shadow: 4px 3px 0px 0px #2c292e;
-  -webkit-box-shadow: 4px 3px 0px 0px #2c292e;
-  box-shadow: 4px 3px 0px 0px #2c292e;
-  background-color: #ededed;
-}
-
-  input[type="text"]:focus,
-  input[type="text"].focus {
-
-  margin-top: 30px;
-  margin-bottom: 30px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  padding-left: 10px;
-  border-bottom: dashed 5px #FF2D55;
-  font-size: 1em;
-  color: #FF2D55;
-  word-wrap: break-word;
-  box-sizing : border-box;
-  -moz-box-shadow: 4px 3px 0px 0px #2c292e;
-  -webkit-box-shadow: 4px 3px 0px 0px #2c292e;
-  box-shadow: 4px 3px 0px 0px #2c292e;
-  background-color: #ededed;
-}
-
-input[type="text"]:blur,
-  input[type="text"].blur {
-  margin-top: 30px;
-  margin-bottom: 30px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  padding-left: 10px;
-  margin-bottom: 20px;
-  border-bottom: solid 5px #FF2D55;
-  font-size: 1.8em;
-  color: #FF2D55;
-  word-wrap: break-word;
-  box-sizing : border-box;
-  background-color: #ededed;
-}
-
-Button {
-  -moz-box-shadow: 4px 3px 0px 0px #2c292e;
-  -webkit-box-shadow: 4px 3px 0px 0px #2c292e;
-  box-shadow: 4px 3px 0px 0px #2c292e;
-  background-color:#ff2d54;
-  display:inline-block;
-  cursor:pointer;
-  color:#ffffff;
-  font-family:Arial;
-  font-size:17px;
-  padding:16px 31px;
-  text-decoration:none;
-  border: none;
-  font-size: 3em;
-}
-
-Button:hover {
-  background-color:#ff2d54;
-}
-Button:active {
-  position:relative;
-  top:1px;
-}
-
-
-hr 
-{
-   border: 0;
-    height: 2px;
-    background: #333;
-    background-color: #333;
-}
-
-h1{
-  font-size: 8em;
-  color: #FF2D55;
-  text-decoration: underline;
-}
-
-h2 {
-  font-size: 4em;
-}
-
-p {
-  font-size: 3em;
-}
-
-pre{
-  margin-top: 30px;
-  padding: 20px 10px 20px 10px;
-  color: #FF2D55;
-  background-color: transparent;
-  background-color: #ededed;
-  outline: 0;
-  border-radius: 0;
-  resize: both;
-  overflow: auto;
-  font-size: 3em;
-  border-bottom: dashed 5px #FF2D55;
-  box-sizing : border-box;
-  -moz-box-shadow: 4px 3px 0px 0px #2c292e;
-  -webkit-box-shadow: 4px 3px 0px 0px #2c292e;
-  box-shadow: 4px 3px 0px 0px #2c292e;
-}
-
-div {
-/*  padding-top: 2%;*/
-  padding-bottom: 5%;
-  margin: auto;
-}
-
-
-
-</style>
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
-  <!-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
+  <div class="wrap">
+    <header class="topbar">
+      <a class="mark" href="https://exposure.money">Exposure</a>
+      <span class="caption">exposure.money</span>
+    </header>
 
-  <div id="error" style="display:none;">
-    <h2>😵 Whoops! Something went wrong with that link.</h2>
-    <p>Please use only your USER ID and nothing else in the field. </p> 
+    <!-- Error state -->
+    <div id="error" class="pay-screen" style="display:none;">
+      <p class="eyebrow">Whoops</p>
+      <h1 class="display">Bad link.</h1>
+      <p>That payment link didn't decode. It should contain only a PayPal.Me user ID and an amount — nothing else.</p>
+      <div class="pay-actions">
+        <a class="btn" href="https://exposure.money">Start over</a>
+      </div>
+    </div>
 
-    <a href="https://exposure.money"><button>Start over</button></a></h2>
-    <!-- TODO more explaination -->
-  </div>
+    <!-- Pay state -->
+    <div id="pay" class="pay-screen" style="display:none;">
+      <p class="eyebrow">You've been paid in Exposure</p>
+      <p class="pay-to">Pay <strong class="username">someone</strong></p>
+      <h1 class="pay-amount"><span class="amount">0</span> <span style="font-size:0.4em;color:var(--muted);">Exposure</span></h1>
+      <p>One click converts it into the cold, hard currency of your choice.</p>
 
-  <div id="pay" style="display: none;">
-    <h2>The simplest, minimal payment system that allows creatives to get paid in Exposure. 📈👍</h2>
+      <div class="pay-actions">
+        <button type="button" id="button">Pay now →</button>
+      </div>
 
-    <p>Just click the button below to pay <strong class="username">username</strong> the amount of <strong class="amount">0</strong> Exposure!</p>
-
-    <button type="button" id="button">Pay with Exposure!</button>
-
-    <div style="margin-top: 30vh;">
-      <hr>
-      <p><a href="https://exposure.money" target="_blank">What is Exposure?</a> | <a href="https://www.youtube.com/watch?v=PBwAxmrE194" target="_blank">Why the Paypal Link?</a></p>
+      <footer class="pay-footer">
+        <p class="caption">
+          <a href="https://exposure.money" target="_blank" rel="noopener">What is Exposure?</a>
+          &nbsp;·&nbsp;
+          <a href="https://www.youtube.com/watch?v=PBwAxmrE194" target="_blank" rel="noopener">Why the PayPal link?</a>
+        </p>
+      </footer>
     </div>
   </div>
 
-  <script type="text/javascript">
-    function showError() {
-      $("#error").show();
-      return false;
-    }
+  <script>
+    (function () {
+      var errorEl = document.getElementById("error");
+      var payEl = document.getElementById("pay");
 
-    function showPaymentMessage(username, amount) {
-      $('#pay').find('.username').text(username);
-      $('#pay').find('.amount').text(amount);
+      function showError() {
+        errorEl.style.display = "flex";
+        return false;
+      }
 
-      $('#pay').show();
-    }
+      function decodeToken(token) {
+        // Inverse of the UTF-8 safe encoder used on the home page.
+        return decodeURIComponent(escape(window.atob(token)));
+      }
 
-    $(document).ready(function(){
-      var path = window.location.pathname.split('/');
-      var pathLength = path.length;
+      var path = window.location.pathname.split("/").filter(Boolean);
 
-      // Check we're meaning to pay:
-      if (pathLength < 2 || path[pathLength - 2] !== 'pay') {
+      // Expect .../pay/<token>
+      if (path.length < 2 || path[path.length - 2] !== "pay") {
         return showError();
       }
 
-      // Get the token:
-      var token = path[pathLength - 1];
+      var token = path[path.length - 1];
       var username, amount;
 
       try {
-        var decoded = window.atob(token);
-        var decodedParts = decoded.split(':');
-
-        username = decodedParts[0];
-        amount = decodedParts[1];
-      } catch(e) {
+        var parts = decodeToken(token).split(":");
+        username = parts[0];
+        amount = parts[1];
+      } catch (e) {
         return showError();
       }
 
@@ -250,15 +103,18 @@ div {
         return showError();
       }
 
-      showPaymentMessage(username, amount);
+      payEl.querySelector(".username").textContent = username;
+      payEl.querySelector(".amount").textContent = amount;
+      payEl.style.display = "flex";
 
-      $('#button').click(function(e) {
-        var username = $(".username").text();
-        var amount = $(".amount").text();
-        window.location = "https://www.paypal.me/"+username+"/"+amount;
+      document.getElementById("button").addEventListener("click", function () {
+        window.location =
+          "https://www.paypal.me/" +
+          encodeURIComponent(username) +
+          "/" +
+          encodeURIComponent(amount);
       });
-    });
+    })();
   </script>
 </body>
-
 </html>
