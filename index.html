@@ -23,147 +23,357 @@
 
   <link rel="icon" type="image/x-icon" href="favicon.ico" />
   <link rel="profile" href="https://www.w3.org/2005/10/profile" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 
-<body>
-  <!-- Reusable flat-geometric motifs -->
-  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
-    <defs>
-      <g id="bloom">
-        <circle cx="50" cy="18" r="15" /><circle cx="50" cy="82" r="15" />
-        <circle cx="18" cy="50" r="15" /><circle cx="82" cy="50" r="15" />
-        <circle cx="27" cy="27" r="15" /><circle cx="73" cy="27" r="15" />
-        <circle cx="27" cy="73" r="15" /><circle cx="73" cy="73" r="15" />
-      </g>
-      <g id="burst">
-        <path d="M50 4 58 38 92 30 66 52 88 80 54 66 50 96 46 66 12 80 34 52 8 30 42 38Z" />
-      </g>
-      <g id="petal">
-        <ellipse cx="50" cy="22" rx="13" ry="22" /><ellipse cx="50" cy="78" rx="13" ry="22" />
-        <ellipse cx="22" cy="50" rx="22" ry="13" /><ellipse cx="78" cy="50" rx="22" ry="13" />
-      </g>
-    </defs>
-  </svg>
+<body class="home">
+  <h1 class="visually-hidden">Exposure — a payment system for creatives tired of being paid in exposure</h1>
 
-  <div class="wrap">
-    <header class="topbar">
-      <span class="mark">Exposure</span>
-      <span class="caption">exposure.money</span>
-    </header>
-
-    <!-- Masthead motif grid -->
-    <div class="tiles" aria-hidden="true">
-      <div class="tile marigold"><svg viewBox="0 0 100 100"><use href="#bloom" fill="#ff2d55"/><circle cx="50" cy="50" r="20" fill="#ff2d55"/><circle cx="50" cy="50" r="9" fill="#ffb12e"/></svg></div>
-      <div class="tile paper"></div>
-      <div class="tile blue"><svg viewBox="0 0 100 100"><use href="#petal" fill="#9fc0ff"/><use href="#burst" fill="#2f5bea"/></svg></div>
-      <div class="tile hotpink hide-sm"><svg viewBox="0 0 100 100"><use href="#petal" fill="#ff2d55"/><circle cx="50" cy="50" r="14" fill="#ffb12e"/></svg></div>
-      <div class="tile green"><svg viewBox="0 0 100 100"><use href="#bloom" fill="#ffb12e"/><circle cx="50" cy="50" r="14" fill="#ff2d55"/></svg></div>
-      <div class="tile pink hide-sm"><svg viewBox="0 0 100 100"><use href="#burst" fill="#ffb12e"/></svg></div>
+  <div class="screen">
+    <!-- Left scrolling column (sine wave) -->
+    <div class="column column--left" aria-hidden="true">
+      <div class="column-content">
+        <p>All work has to be financially compensated. Exposure is built for creatives tired of dealing with the exchange rate of exposure in potential projects and markets.</p>
+        <p>We advocate for the fair payment of labor on terms agreed between client and provider — terms that let the provider live off their work.</p>
+        <p>Because <a href="https://www.youtube.com/watch?v=PBwAxmrE194" target="_blank" rel="noopener">C.R.E.A.M.</a> Cash rules everything around me. Accept only cold hard exposure or cash, ideally in advance.</p>
+        <p>You did not spend years learning your craft to be paid in screenshots, tagged stories, and the vague promise of future work that never arrives.</p>
+        <p>Great opportunity. Amazing for your portfolio. It will get your name out there. We have no budget right now but there will be more down the line.</p>
+        <p>Decline politely. Send the link. Let the exposure convert itself into something your landlord accepts.</p>
+      </div>
     </div>
 
-    <!-- Hero -->
-    <section class="hero">
-      <div class="hero-row">
-        <h1 class="display">Exposure</h1>
-        <p class="lede">A payment system for creatives who are tired of being paid in&nbsp;exposure.</p>
+    <!-- Center fixed UI -->
+    <main class="stage">
+      <div class="stage-inner">
+        <p class="wordmark"><span class="emoji" aria-hidden="true">🤑</span> Exposure</p>
+
+        <div class="card" id="card">
+          <div class="flip-inner">
+            <!-- Front: Generate -->
+            <div class="face face--front">
+              <nav class="tabs" aria-label="Card side">
+                <button type="button" class="tab is-active" data-face="front">Generate</button>
+                <button type="button" class="tab" data-face="back">How it works</button>
+              </nav>
+
+              <div class="face-body">
+                <p class="lead">Get paid what your work is actually worth — in Exposure. Make a link and send it to whoever offered you "great exposure."</p>
+
+                <div class="field">
+                  <label for="amount">The amount you want — in Exposure</label>
+                  <input type="text" id="amount" inputmode="decimal" placeholder="100" autocomplete="off" />
+                  <span class="hint">Exchange rate: 1 Exposure = 1 unit of your PayPal currency. Forever.</span>
+                </div>
+
+                <div class="field">
+                  <label for="username">Your PayPal.Me user ID</label>
+                  <input type="text" id="username" placeholder="myuserID" autocomplete="off" />
+                  <span class="hint">Only the ID part — the bit after paypal.me/</span>
+                </div>
+
+                <button type="button" id="generate">Generate Exposure link</button>
+
+                <div class="result">
+                  <span class="eyebrow">Your shareable link</span>
+                  <div class="linkbox">
+                    <code class="link placeholder" id="output">Your link will appear here.</code>
+                    <button type="button" class="copy" id="copy" disabled>Copy</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Back: How it works -->
+            <div class="face face--back">
+              <nav class="tabs" aria-label="Card side">
+                <button type="button" class="tab" data-face="front">Generate</button>
+                <button type="button" class="tab is-active" data-face="back">How it works</button>
+              </nav>
+
+              <div class="face-body">
+                <p>Enter the amount your work is worth and your PayPal.Me ID — the bit right after <strong>paypal.me/</strong>. We turn it into a payment link you can send.</p>
+
+                <h3>Test it</h3>
+                <p>Open the link in a new tab — a clean checkout that forwards your client to PayPal.Me, amount pre-filled.</p>
+
+                <h3>Send it</h3>
+                <p>Your client pays through PayPal, and the "exposure" finally converts into real money.</p>
+
+                <p class="fine">Because <a href="https://www.youtube.com/watch?v=PBwAxmrE194" target="_blank" rel="noopener">C.R.E.A.M.</a> — cash or cold hard Exposure, ideally in advance. Runs entirely in your browser; nothing is tracked. <a href="https://github.com/danilosierrac/exposure" target="_blank" rel="noopener">Read the code.</a> Not affiliated with PayPal.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <a class="colophon" href="https://mimosaagency.com/" target="_blank" rel="noopener">Made by mimosa agency</a>
       </div>
-    </section>
+    </main>
 
-    <!-- Generator -->
-    <section>
-      <p class="eyebrow">Step 1 — Generate your link</p>
-      <div class="card">
-        <div class="field">
-          <label for="amount">The amount you want — in Exposure</label>
-          <input type="text" id="amount" inputmode="decimal" placeholder="100" autocomplete="off" />
-          <span class="hint">Exchange rate: 1 Exposure = 1 unit of your PayPal currency. Forever.</span>
-        </div>
-
-        <div class="field">
-          <label for="username">Your PayPal.Me user ID</label>
-          <input type="text" id="username" placeholder="myuserID" autocomplete="off" />
-          <span class="hint">Only the ID part — the bit after paypal.me/</span>
-        </div>
-
-        <button type="button" id="generate">Generate Exposure link</button>
-
-        <div class="result">
-          <p class="eyebrow">Your shareable link</p>
-          <pre class="link placeholder" id="output">Fill in the fields above, then hit generate.</pre>
-        </div>
+    <!-- Right scrolling column (cosine wave) -->
+    <div class="column column--right" aria-hidden="true">
+      <div class="column-content">
+        <p>The simplest, minimal payment system that lets creatives get paid in exposure.</p>
+        <p>Exchange rate: one Exposure equals one unit of your PayPal currency. Forever. The most stable currency ever devised.</p>
+        <p>Generate a link. Send it to the client who offered you exposure. Watch the exposure convert, at last, into money.</p>
+        <p>Paid in exposure. Paid in exposure. Paid in exposure. Paid in exposure. Paid in exposure. Paid in exposure.</p>
+        <p>We make nothing out of this but a dent in the exposure market. Everything happens in your browser. Nothing is tracked.</p>
+        <p>Accept only cold hard exposure or cash. Ideally in advance. Always in advance.</p>
       </div>
-    </section>
-
-    <!-- Steps -->
-    <section class="section">
-      <h2>2. Test it before you send</h2>
-      <p>Open the link in another tab. It lands on a clean checkout page with a single button that forwards your "client" to your PayPal.Me page, amount pre-filled. If it works, it's ready to send.</p>
-
-      <h2>3. Send it</h2>
-      <p>Now your prospective client can finally pay you in Exposure — the kind that converts to real money. You're welcome.</p>
-    </section>
-
-    <!-- How it works -->
-    <section class="section">
-      <h2>How it works</h2>
-      <p>Your PayPal.Me user ID doubles as your Exposure user ID — it's the part right after <strong>paypal.me/</strong>. Enter it with the amount your work is actually worth, and we build the link. We handle the rest.</p>
-
-      <h3>Don't have a PayPal ID?</h3>
-      <p><a href="https://www.paypal.me/" target="_blank" rel="noopener">Here's how to get paid with a PayPal.Me ID.</a></p>
-
-      <h3>Something's wrong?</h3>
-      <p>Then send them our preferred backup payment method: 💸💸💸💸💸💸💸💸</p>
-
-      <h3>Why</h3>
-      <p>Because <a href="https://www.youtube.com/watch?v=PBwAxmrE194" target="_blank" rel="noopener">C.R.E.A.M.</a> Accept only cold hard Exposure or cash — ideally in advance.</p>
-    </section>
-
-    <!-- Disclaimer -->
-    <footer class="disclaimer">
-      <h2 class="display">Disclaimer</h2>
-      <p>We make nothing out of this but a dent in the Exposure market. The link is generated by a small script that runs entirely in your browser — we don't keep or track anything about you. In case of doubt, <a href="https://github.com/danilosierrac/exposure" target="_blank" rel="noopener">read the code</a>.</p>
-      <p>We have no association with PayPal. Don't @ us.</p>
-      <p>We advocate for the fair payment of labor on terms agreed between client and provider that let the provider live off their work.</p>
-      <p>Made by <a href="https://mimosaagency.com/" target="_blank" rel="noopener">mimosa agency</a>, with parody intentions.</p>
-    </footer>
+    </div>
   </div>
 
+  <!-- Link generator + copy -->
   <script>
     (function () {
       var amountEl = document.getElementById("amount");
       var usernameEl = document.getElementById("username");
       var output = document.getElementById("output");
-
-      function encodeToken(username, amount) {
-        // UTF-8 safe base64; keep padding so the pay page can decode it.
-        return btoa(unescape(encodeURIComponent(username + ":" + amount)));
-      }
+      var copyBtn = document.getElementById("copy");
 
       function generate() {
         var amount = amountEl.value.trim();
         var username = usernameEl.value.trim().replace(/^.*paypal\.me\//i, "");
 
         if (!username || !amount) {
-          output.textContent = "Add both an amount and a PayPal.Me ID first.";
+          output.textContent = "Add an amount and a PayPal.Me ID first.";
           output.classList.add("placeholder");
+          copyBtn.disabled = true;
           return;
         }
 
-        var token = encodeToken(username, amount);
+        // UTF-8 safe base64; keep padding so the pay page can decode it.
+        var token = btoa(unescape(encodeURIComponent(username + ":" + amount)));
         output.textContent = "https://exposure.money/pay/" + token;
         output.classList.remove("placeholder");
+        copyBtn.disabled = false;
+      }
+
+      function copy() {
+        if (copyBtn.disabled) return;
+        var text = output.textContent;
+        function done() {
+          copyBtn.textContent = "Copied";
+          setTimeout(function () { copyBtn.textContent = "Copy"; }, 1500);
+        }
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(done, fallback);
+        } else {
+          fallback();
+        }
+        function fallback() {
+          var ta = document.createElement("textarea");
+          ta.value = text;
+          ta.style.position = "fixed";
+          ta.style.opacity = "0";
+          document.body.appendChild(ta);
+          ta.select();
+          try { document.execCommand("copy"); done(); } catch (e) {}
+          document.body.removeChild(ta);
+        }
       }
 
       document.getElementById("generate").addEventListener("click", generate);
+      copyBtn.addEventListener("click", copy);
       [amountEl, usernameEl].forEach(function (el) {
         el.addEventListener("keydown", function (e) {
           if (e.key === "Enter") generate();
         });
       });
+    })();
+  </script>
+
+  <!-- Flip card -->
+  <script>
+    (function () {
+      var card = document.getElementById("card");
+      var front = card.querySelector(".face--front");
+      var back = card.querySelector(".face--back");
+
+      function setFace(face) {
+        var isBack = face === "back";
+        card.classList.toggle("flipped", isBack);
+        front.inert = isBack;
+        back.inert = !isBack;
+        front.setAttribute("aria-hidden", isBack ? "true" : "false");
+        back.setAttribute("aria-hidden", isBack ? "false" : "true");
+        Array.prototype.forEach.call(card.querySelectorAll(".tab"), function (t) {
+          t.classList.toggle("is-active", t.dataset.face === face);
+        });
+      }
+
+      Array.prototype.forEach.call(card.querySelectorAll("[data-face]"), function (btn) {
+        btn.addEventListener("click", function () { setFace(btn.dataset.face); });
+      });
+
+      setFace("front");
+    })();
+  </script>
+
+  <!-- Organic text distortion: infinite vertical scroll, per-line sine/cosine wave,
+       amplitude driven by scroll velocity. Adapted from the Codrops technique. -->
+  <script>
+    (function () {
+      var reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
+      var desktop = window.matchMedia("(min-width: 1025px)");
+
+      // Break a <p>'s text into per-word spans, then group into .line blocks.
+      function splitLines(p) {
+        var words = [];
+        Array.prototype.forEach.call(p.childNodes, function (node) {
+          if (node.nodeType === 3) {
+            node.textContent.split(/\s+/).forEach(function (w) {
+              if (w) words.push({ tag: "span", text: w });
+            });
+          } else if (node.tagName === "A") {
+            words.push({ tag: "a", text: node.textContent, href: node.href,
+              target: node.target, rel: node.rel });
+          } else if (node.textContent.trim()) {
+            node.textContent.split(/\s+/).forEach(function (w) {
+              if (w) words.push({ tag: "span", text: w });
+            });
+          }
+        });
+
+        p.innerHTML = "";
+        var spans = words.map(function (o) {
+          var e = document.createElement(o.tag === "a" ? "a" : "span");
+          e.className = "word";
+          e.textContent = o.text;
+          if (o.tag === "a") { e.href = o.href; if (o.target) e.target = o.target; e.rel = "noopener"; }
+          p.appendChild(e);
+          p.appendChild(document.createTextNode(" "));
+          return e;
+        });
+
+        // Group spans into lines by their vertical offset.
+        var lines = [], cur = null, top = null;
+        spans.forEach(function (s) {
+          var t = s.offsetTop;
+          if (cur === null || Math.abs(t - top) > 2) { cur = []; lines.push(cur); top = t; }
+          cur.push(s);
+        });
+
+        p.innerHTML = "";
+        lines.forEach(function (group) {
+          var line = document.createElement("span");
+          line.className = "line";
+          group.forEach(function (s, i) {
+            line.appendChild(s);
+            if (i < group.length - 1) line.appendChild(document.createTextNode(" "));
+          });
+          p.appendChild(line);
+        });
+      }
+
+      function Column(el, dir) {
+        this.el = el;
+        this.content = el.querySelector(".column-content");
+        this.dir = dir;                         // +1 scroll up, -1 scroll down
+        this.base = 0.22 * dir;                 // idle drift px/frame
+        this.basePs = Array.prototype.map.call(
+          this.content.querySelectorAll("p"),
+          function (p) { return p.cloneNode(true); }
+        );
+        this.pos = 0; this.speed = this.base; this.target = this.base;
+        this.build();
+      }
+
+      Column.prototype.build = function () {
+        var winH = window.innerHeight;
+        this.content.innerHTML = "";
+        this.basePs.forEach(function (p) { this.content.appendChild(p.cloneNode(true)); }, this);
+        Array.prototype.forEach.call(this.content.querySelectorAll("p"), splitLines);
+
+        // Fill at least ~1.4 viewports, then duplicate once for a seamless loop.
+        var guard = 0;
+        while (this.content.scrollHeight < winH * 1.4 && guard < 8) {
+          Array.prototype.slice.call(this.content.children).forEach(function (k) {
+            this.content.appendChild(k.cloneNode(true));
+          }, this);
+          guard++;
+        }
+        this.loop = this.content.scrollHeight;
+        Array.prototype.slice.call(this.content.children).forEach(function (k) {
+          this.content.appendChild(k.cloneNode(true));
+        }, this);
+
+        this.lines = Array.prototype.map.call(
+          this.content.querySelectorAll(".line"),
+          function (el) { return { el: el, top: el.offsetTop }; }
+        );
+      };
+
+      Column.prototype.frame = function (time) {
+        this.speed += (this.target - this.speed) * 0.05;
+        this.target += (this.base - this.target) * 0.04;   // ease back to drift
+        this.pos += this.speed;
+        var w = ((this.pos % this.loop) + this.loop) % this.loop;
+        this.content.style.transform = "translateY(" + (-w).toFixed(2) + "px)";
+
+        var winH = window.innerHeight;
+        var amp = 4 + Math.min(34, Math.abs(this.speed - this.base) * 4.5);
+        var t = time * 0.0007;
+        var up = this.dir > 0;
+        for (var i = 0; i < this.lines.length; i++) {
+          var L = this.lines[i];
+          var screenY = L.top - w;
+          var prog = screenY / winH;
+          prog = prog < 0 ? 0 : prog > 1 ? 1 : prog;
+          var wave = up ? Math.sin(prog * Math.PI + t) : Math.cos(prog * Math.PI + t);
+          L.el.style.transform = "translateX(" + (wave * amp).toFixed(2) + "px)";
+        }
+      };
+
+      Column.prototype.kick = function (delta) {
+        this.target += delta * this.dir;
+      };
+
+      var cols = [];
+      function start() {
+        if (reduce.matches || !desktop.matches) {
+          document.body.classList.add("no-columns");
+          return;
+        }
+        document.body.classList.remove("no-columns");
+        cols = [
+          new Column(document.querySelector(".column--left"), 1),
+          new Column(document.querySelector(".column--right"), -1)
+        ];
+
+        window.addEventListener("wheel", function (e) {
+          if (e.target.closest && e.target.closest(".card")) return; // let the card scroll
+          var d = (e.deltaY || 0) * 0.05;
+          cols.forEach(function (c) { c.kick(d); });
+        }, { passive: true });
+
+        var touchY = 0;
+        window.addEventListener("touchstart", function (e) { touchY = e.touches[0].clientY; }, { passive: true });
+        window.addEventListener("touchmove", function (e) {
+          var y = e.touches[0].clientY, d = (touchY - y) * 0.12;
+          touchY = y;
+          cols.forEach(function (c) { c.kick(d); });
+        }, { passive: true });
+
+        requestAnimationFrame(function loop(t) {
+          for (var i = 0; i < cols.length; i++) cols[i].frame(t);
+          requestAnimationFrame(loop);
+        });
+      }
+
+      function rebuild() { cols.forEach(function (c) { c.build(); }); }
+      var rt;
+      window.addEventListener("resize", function () {
+        clearTimeout(rt);
+        rt = setTimeout(function () {
+          if (cols.length) rebuild();
+          else start();
+        }, 200);
+      });
+
+      window.addEventListener("load", start);
+      if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(function () { if (cols.length) rebuild(); });
+      }
     })();
   </script>
 </body>
