@@ -14,9 +14,10 @@
   --line: #d8d4c6;
 
   --maxw: 760px;
-  --serif: "Fraunces", "Hoefler Text", Georgia, "Times New Roman", serif;
-  --sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
-    Helvetica, Arial, sans-serif;
+  /* Neutral grotesque (Helvetica) throughout — modern + minimal.
+     --serif kept as a name only; both point at the same sans stack. */
+  --sans: "Helvetica Neue", Helvetica, "Inter", Arial, system-ui, sans-serif;
+  --serif: "Helvetica Neue", Helvetica, "Inter", Arial, system-ui, sans-serif;
 }
 
 * {
@@ -32,8 +33,9 @@ body {
   background: var(--paper);
   color: var(--ink);
   font-family: var(--sans);
-  font-size: 18px;
-  line-height: 1.6;
+  font-size: 17px;
+  line-height: 1.55;
+  letter-spacing: -0.011em;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
@@ -49,17 +51,18 @@ body {
 h1,
 h2,
 h3 {
-  font-family: var(--serif);
-  font-weight: 600;
-  line-height: 1.04;
-  letter-spacing: -0.015em;
+  font-family: var(--sans);
+  font-weight: 700;
+  line-height: 1.02;
+  letter-spacing: -0.03em;
   margin: 0;
 }
 
 .display {
   font-size: clamp(3.2rem, 13vw, 7.5rem);
-  font-weight: 600;
+  font-weight: 700;
   font-style: normal;
+  letter-spacing: -0.04em;
 }
 
 h2 {
@@ -168,10 +171,10 @@ body.home {
 }
 
 .frame .mark {
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: 1.05rem;
-  font-weight: 600;
-  letter-spacing: -0.01em;
+  font-weight: 700;
+  letter-spacing: -0.03em;
   pointer-events: auto;
 }
 
@@ -208,15 +211,21 @@ body.home {
 
 .column-content {
   will-change: transform;
+  width: clamp(190px, 18vw, 290px);
+}
+
+.column--right .column-content {
+  margin-left: auto;
 }
 
 .column p {
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-weight: 400;
-  font-size: clamp(0.95rem, 1.15vw, 1.18rem);
-  line-height: 1.5;
-  color: rgba(22, 19, 15, 0.4);
-  margin: 0 0 1.1em;
+  font-size: 0.8rem;
+  line-height: 1.45;
+  letter-spacing: -0.005em;
+  color: rgba(22, 19, 15, 0.34);
+  margin: 0 0 1.5em;
   max-width: none;
 }
 
@@ -349,8 +358,10 @@ body.home {
 
 input[type="text"] {
   width: 100%;
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: 1.5rem;
+  font-weight: 500;
+  letter-spacing: -0.02em;
   color: var(--ink);
   background: transparent;
   border: 0;
