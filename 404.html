@@ -21,47 +21,37 @@
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:image" content="https://github.com/danilosierrac/exposure/blob/master/exposure.png?raw=true" />
 
-  <link rel="icon" type="image/x-icon" href="favicon.ico" />
-  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="stylesheet" href="/style.css" />
 </head>
 
-<body>
-  <div class="wrap">
-    <header class="topbar">
-      <a class="mark" href="https://exposure.money">Exposure</a>
-      <span class="caption">exposure.money</span>
-    </header>
+<body class="pay">
+  <main class="pay-wrap">
+    <p class="wordmark"><span class="emoji" aria-hidden="true">🤑</span> Exposure</p>
 
     <!-- Error state -->
-    <div id="error" class="pay-screen" style="display:none;">
+    <div class="paycard" id="error" hidden>
       <p class="eyebrow">Whoops</p>
-      <h1 class="display">Bad link.</h1>
-      <p>That payment link didn't decode. It should contain only a PayPal.Me user ID and an amount — nothing else.</p>
-      <div class="pay-actions">
-        <a class="btn" href="https://exposure.money">Start over</a>
-      </div>
+      <h2 class="pay-head">Bad link</h2>
+      <p class="pay-note">That payment link didn't decode. It should contain only a PayPal.Me user ID and an amount.</p>
+      <a class="pay-btn" href="https://exposure.money">Start over</a>
     </div>
 
     <!-- Pay state -->
-    <div id="pay" class="pay-screen" style="display:none;">
+    <div class="paycard" id="pay" hidden>
       <p class="eyebrow">You've been paid in Exposure</p>
-      <p class="pay-to">Pay <strong class="username">someone</strong></p>
-      <h1 class="pay-amount"><span class="amount">0</span> <span style="font-size:0.4em;color:var(--muted);">Exposure</span></h1>
-      <p>One click converts it into the cold, hard currency of your choice.</p>
-
-      <div class="pay-actions">
-        <button type="button" id="button">Pay now →</button>
-      </div>
-
-      <footer class="pay-footer">
-        <p class="caption">
-          <a href="https://exposure.money" target="_blank" rel="noopener">What is Exposure?</a>
-          &nbsp;·&nbsp;
-          <a href="https://www.youtube.com/watch?v=PBwAxmrE194" target="_blank" rel="noopener">Why the PayPal link?</a>
-        </p>
-      </footer>
+      <p class="pay-amount"><span class="amount">0</span><span class="pay-unit">Exposure</span></p>
+      <p class="pay-to">to <strong class="username">someone</strong></p>
+      <button type="button" class="pay-btn" id="button">Convert to money →</button>
+      <p class="pay-note">One click forwards you to PayPal.Me to pay in the cold, hard currency of your choice.</p>
     </div>
-  </div>
+
+    <p class="caption pay-links">
+      <a href="https://exposure.money" target="_blank" rel="noopener">What is Exposure?</a>
+      &nbsp;·&nbsp;
+      <a href="https://www.youtube.com/watch?v=PBwAxmrE194" target="_blank" rel="noopener">Why the PayPal link?</a>
+    </p>
+  </main>
 
   <script>
     (function () {
@@ -69,7 +59,7 @@
       var payEl = document.getElementById("pay");
 
       function showError() {
-        errorEl.style.display = "flex";
+        errorEl.hidden = false;
         return false;
       }
 
@@ -102,7 +92,7 @@
 
       payEl.querySelector(".username").textContent = username;
       payEl.querySelector(".amount").textContent = amount;
-      payEl.style.display = "flex";
+      payEl.hidden = false;
 
       document.getElementById("button").addEventListener("click", function () {
         window.location =

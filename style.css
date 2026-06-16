@@ -327,7 +327,7 @@ body.home {
 .card {
   position: relative;
   width: 100%;
-  height: clamp(560px, 78svh, 640px);
+  height: clamp(540px, 76svh, 600px);
   perspective: 1800px;
 }
 
@@ -383,6 +383,24 @@ body.home {
 
 .face-body > p:first-child {
   margin-top: 0;
+}
+
+.lead {
+  font-size: 1.04rem;
+  line-height: 1.4;
+  letter-spacing: -0.012em;
+  margin: 0 0 22px;
+}
+
+.fine {
+  margin-top: 1.5em;
+  font-size: 0.82rem;
+  line-height: 1.45;
+  color: var(--muted);
+}
+
+.wordmark .emoji {
+  font-style: normal;
 }
 
 .field {
@@ -553,35 +571,105 @@ button:active,
 
 /* ---- Pay page ---- */
 
-.pay-screen {
+.pay-wrap {
   min-height: 100svh;
   display: flex;
   flex-direction: column;
+  align-items: center;
   justify-content: center;
-  padding: 60px 0;
+  padding: 40px 20px;
+}
+
+.paycard {
+  width: 100%;
+  max-width: 440px;
+  background: #fbfaf5;
+  border: 1.5px solid var(--ink);
+  border-radius: 14px;
+  box-shadow: 8px 8px 0 var(--ink);
+  padding: 34px 30px;
+  text-align: center;
+}
+
+.paycard[hidden] {
+  display: none;
+}
+
+.paycard .eyebrow {
+  display: block;
+  margin-bottom: 16px;
+}
+
+.pay-head {
+  font-size: clamp(2rem, 8vw, 2.8rem);
+  letter-spacing: -0.03em;
+  margin: 0 0 0.4em;
 }
 
 .pay-amount {
-  font-family: var(--serif);
-  font-size: clamp(3rem, 14vw, 7rem);
+  font-family: var(--sans);
+  font-weight: 700;
+  font-size: clamp(3rem, 13vw, 5.2rem);
   line-height: 1;
-  letter-spacing: -0.02em;
-  margin: 0.1em 0 0.05em;
+  letter-spacing: -0.04em;
+  margin: 0;
+}
+
+.pay-unit {
+  display: block;
+  margin-top: 8px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
 }
 
 .pay-to {
   color: var(--muted);
-  font-size: 1.05rem;
+  font-size: 1.02rem;
+  margin: 12px 0 26px;
 }
 
-.pay-actions {
-  margin-top: 32px;
+.pay-btn {
+  display: inline-block;
+  box-sizing: border-box;
+  width: 100%;
+  text-align: center;
+  font-family: var(--sans);
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: #fff;
+  background: var(--ink);
+  border: 0;
+  border-bottom: 0;
+  border-radius: 999px;
+  padding: 15px 28px;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.08s ease;
 }
 
-.pay-footer {
-  margin-top: auto;
-  padding-top: 48px;
-  border-top: 1.5px solid var(--line);
+.pay-btn:hover {
+  background: var(--pink);
+  color: #fff;
+  opacity: 1;
+}
+
+.pay-btn:active {
+  transform: translateY(1px);
+}
+
+.pay-note {
+  margin: 18px 0 0;
+  font-size: 0.85rem;
+  color: var(--muted);
+  max-width: none;
+}
+
+.pay-links {
+  margin-top: 26px;
+  text-align: center;
 }
 
 /* ---- Small screens: drop the fixed screen, stack the card ---- */

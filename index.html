@@ -45,7 +45,7 @@
     <!-- Center fixed UI -->
     <main class="stage">
       <div class="stage-inner">
-        <p class="wordmark">Exposure</p>
+        <p class="wordmark"><span class="emoji" aria-hidden="true">🤑</span> Exposure</p>
 
         <div class="card" id="card">
           <div class="flip-inner">
@@ -57,6 +57,8 @@
               </nav>
 
               <div class="face-body">
+                <p class="lead">Get paid what your work is actually worth — in Exposure. Make a link and send it to whoever offered you "great exposure."</p>
+
                 <div class="field">
                   <label for="amount">The amount you want — in Exposure</label>
                   <input type="text" id="amount" inputmode="decimal" placeholder="100" autocomplete="off" />
@@ -89,19 +91,15 @@
               </nav>
 
               <div class="face-body">
-                <p>Your PayPal.Me user ID doubles as your Exposure user ID — the part right after <strong>paypal.me/</strong>. Enter it with the amount your work is actually worth, and we build the link.</p>
+                <p>Enter the amount your work is worth and your PayPal.Me ID — the bit right after <strong>paypal.me/</strong>. We turn it into a payment link you can send.</p>
 
                 <h3>Test it</h3>
-                <p>Open the link in another tab. It lands on a clean checkout page with a single button that forwards your "client" to your PayPal.Me page, amount pre-filled.</p>
+                <p>Open the link in a new tab — a clean checkout that forwards your client to PayPal.Me, amount pre-filled.</p>
 
                 <h3>Send it</h3>
-                <p>Your client can finally pay you in Exposure — the kind that converts to real money. You're welcome.</p>
+                <p>Your client pays through PayPal, and the "exposure" finally converts into real money.</p>
 
-                <h3>Why</h3>
-                <p>Because <a href="https://www.youtube.com/watch?v=PBwAxmrE194" target="_blank" rel="noopener">C.R.E.A.M.</a> Accept only cold hard Exposure or cash — ideally in advance.</p>
-
-                <h3>Disclaimer</h3>
-                <p>We make nothing out of this but a dent in the Exposure market. Everything runs in your browser — we don't keep or track anything. <a href="https://github.com/danilosierrac/exposure" target="_blank" rel="noopener">Read the code.</a> No association with PayPal. Don't @ us.</p>
+                <p class="fine">Because <a href="https://www.youtube.com/watch?v=PBwAxmrE194" target="_blank" rel="noopener">C.R.E.A.M.</a> — cash or cold hard Exposure, ideally in advance. Runs entirely in your browser; nothing is tracked. <a href="https://github.com/danilosierrac/exposure" target="_blank" rel="noopener">Read the code.</a> Not affiliated with PayPal.</p>
               </div>
             </div>
           </div>
@@ -271,7 +269,7 @@
         this.el = el;
         this.content = el.querySelector(".column-content");
         this.dir = dir;                         // +1 scroll up, -1 scroll down
-        this.base = 0.4 * dir;                  // idle drift px/frame
+        this.base = 0.22 * dir;                 // idle drift px/frame
         this.basePs = Array.prototype.map.call(
           this.content.querySelectorAll("p"),
           function (p) { return p.cloneNode(true); }
