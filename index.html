@@ -29,11 +29,6 @@
 <body class="home">
   <h1 class="visually-hidden">Exposure — a payment system for creatives tired of being paid in exposure</h1>
 
-  <header class="frame">
-    <span class="mark">Exposure</span>
-    <span class="caption">exposure.money</span>
-  </header>
-
   <div class="screen">
     <!-- Left scrolling column (sine wave) -->
     <div class="column column--left" aria-hidden="true">
@@ -49,66 +44,71 @@
 
     <!-- Center fixed UI -->
     <main class="stage">
-      <div class="card">
-        <div class="tabs" role="tablist" aria-label="Steps">
-          <button class="tab" id="tab-generate" role="tab" aria-selected="true" aria-controls="panel-generate">Generate</button>
-          <button class="tab" id="tab-test" role="tab" aria-selected="false" aria-controls="panel-test" tabindex="-1">Test</button>
-          <button class="tab" id="tab-send" role="tab" aria-selected="false" aria-controls="panel-send" tabindex="-1">Send</button>
-          <button class="tab" id="tab-about" role="tab" aria-selected="false" aria-controls="panel-about" tabindex="-1">About</button>
+      <div class="stage-inner">
+        <p class="wordmark">Exposure</p>
+
+        <div class="card" id="card">
+          <div class="flip-inner">
+            <!-- Front: Generate -->
+            <div class="face face--front">
+              <nav class="tabs" aria-label="Card side">
+                <button type="button" class="tab is-active" data-face="front">Generate</button>
+                <button type="button" class="tab" data-face="back">How it works</button>
+              </nav>
+
+              <div class="face-body">
+                <div class="field">
+                  <label for="amount">The amount you want — in Exposure</label>
+                  <input type="text" id="amount" inputmode="decimal" placeholder="100" autocomplete="off" />
+                  <span class="hint">Exchange rate: 1 Exposure = 1 unit of your PayPal currency. Forever.</span>
+                </div>
+
+                <div class="field">
+                  <label for="username">Your PayPal.Me user ID</label>
+                  <input type="text" id="username" placeholder="myuserID" autocomplete="off" />
+                  <span class="hint">Only the ID part — the bit after paypal.me/</span>
+                </div>
+
+                <button type="button" id="generate">Generate Exposure link</button>
+
+                <div class="result">
+                  <span class="eyebrow">Your shareable link</span>
+                  <div class="linkbox">
+                    <code class="link placeholder" id="output">Your link will appear here.</code>
+                    <button type="button" class="copy" id="copy" disabled>Copy</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Back: How it works -->
+            <div class="face face--back">
+              <nav class="tabs" aria-label="Card side">
+                <button type="button" class="tab" data-face="front">Generate</button>
+                <button type="button" class="tab is-active" data-face="back">How it works</button>
+              </nav>
+
+              <div class="face-body">
+                <p>Your PayPal.Me user ID doubles as your Exposure user ID — the part right after <strong>paypal.me/</strong>. Enter it with the amount your work is actually worth, and we build the link.</p>
+
+                <h3>Test it</h3>
+                <p>Open the link in another tab. It lands on a clean checkout page with a single button that forwards your "client" to your PayPal.Me page, amount pre-filled.</p>
+
+                <h3>Send it</h3>
+                <p>Your client can finally pay you in Exposure — the kind that converts to real money. You're welcome.</p>
+
+                <h3>Why</h3>
+                <p>Because <a href="https://www.youtube.com/watch?v=PBwAxmrE194" target="_blank" rel="noopener">C.R.E.A.M.</a> Accept only cold hard Exposure or cash — ideally in advance.</p>
+
+                <h3>Disclaimer</h3>
+                <p>We make nothing out of this but a dent in the Exposure market. Everything runs in your browser — we don't keep or track anything. <a href="https://github.com/danilosierrac/exposure" target="_blank" rel="noopener">Read the code.</a> No association with PayPal. Don't @ us.</p>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <!-- Generate -->
-        <section class="panel" id="panel-generate" role="tabpanel" aria-labelledby="tab-generate" tabindex="0">
-          <div class="field">
-            <label for="amount">The amount you want — in Exposure</label>
-            <input type="text" id="amount" inputmode="decimal" placeholder="100" autocomplete="off" />
-            <span class="hint">Exchange rate: 1 Exposure = 1 unit of your PayPal currency. Forever.</span>
-          </div>
-
-          <div class="field">
-            <label for="username">Your PayPal.Me user ID</label>
-            <input type="text" id="username" placeholder="myuserID" autocomplete="off" />
-            <span class="hint">Only the ID part — the bit after paypal.me/</span>
-          </div>
-
-          <button type="button" id="generate">Generate Exposure link</button>
-
-          <div class="result">
-            <p class="eyebrow">Your shareable link</p>
-            <pre class="link placeholder" id="output">Fill in the fields above, then hit generate.</pre>
-          </div>
-        </section>
-
-        <!-- Test -->
-        <section class="panel" id="panel-test" role="tabpanel" aria-labelledby="tab-test" tabindex="0" hidden>
-          <h2>Test it before you send</h2>
-          <p>Open the link in another tab. It lands on a clean checkout page with a single button that forwards your "client" to your PayPal.Me page, amount pre-filled.</p>
-          <p>If it works, it's ready to send.</p>
-        </section>
-
-        <!-- Send -->
-        <section class="panel" id="panel-send" role="tabpanel" aria-labelledby="tab-send" tabindex="0" hidden>
-          <h2>Send it</h2>
-          <p>Now your prospective client can finally pay you in Exposure — the kind that converts to real money.</p>
-          <p>You're welcome.</p>
-        </section>
-
-        <!-- About -->
-        <section class="panel" id="panel-about" role="tabpanel" aria-labelledby="tab-about" tabindex="0" hidden>
-          <h2>How it works</h2>
-          <p>Your PayPal.Me user ID doubles as your Exposure user ID — the part right after <strong>paypal.me/</strong>. Enter it with the amount your work is actually worth, and we build the link.</p>
-
-          <h3>Don't have a PayPal ID?</h3>
-          <p><a href="https://www.paypal.me/" target="_blank" rel="noopener">Here's how to get paid with a PayPal.Me ID.</a></p>
-
-          <h3>Why</h3>
-          <p>Because <a href="https://www.youtube.com/watch?v=PBwAxmrE194" target="_blank" rel="noopener">C.R.E.A.M.</a> Accept only cold hard Exposure or cash — ideally in advance.</p>
-
-          <h3>Disclaimer</h3>
-          <p>We make nothing out of this but a dent in the Exposure market. The link is generated by a small script that runs entirely in your browser — we don't keep or track anything. <a href="https://github.com/danilosierrac/exposure" target="_blank" rel="noopener">Read the code.</a> No association with PayPal. Don't @ us. Made by <a href="https://mimosaagency.com/" target="_blank" rel="noopener">mimosa agency</a>, with parody intentions.</p>
-        </section>
+        <a class="colophon" href="https://mimosaagency.com/" target="_blank" rel="noopener">Made by mimosa agency</a>
       </div>
-      <p class="caption stage-hint">Scroll anywhere — the words distort.</p>
     </main>
 
     <!-- Right scrolling column (cosine wave) -->
@@ -124,34 +124,58 @@
     </div>
   </div>
 
-  <!-- Link generator -->
+  <!-- Link generator + copy -->
   <script>
     (function () {
       var amountEl = document.getElementById("amount");
       var usernameEl = document.getElementById("username");
       var output = document.getElementById("output");
-
-      function encodeToken(username, amount) {
-        // UTF-8 safe base64; keep padding so the pay page can decode it.
-        return btoa(unescape(encodeURIComponent(username + ":" + amount)));
-      }
+      var copyBtn = document.getElementById("copy");
 
       function generate() {
         var amount = amountEl.value.trim();
         var username = usernameEl.value.trim().replace(/^.*paypal\.me\//i, "");
 
         if (!username || !amount) {
-          output.textContent = "Add both an amount and a PayPal.Me ID first.";
+          output.textContent = "Add an amount and a PayPal.Me ID first.";
           output.classList.add("placeholder");
+          copyBtn.disabled = true;
           return;
         }
 
-        var token = encodeToken(username, amount);
+        // UTF-8 safe base64; keep padding so the pay page can decode it.
+        var token = btoa(unescape(encodeURIComponent(username + ":" + amount)));
         output.textContent = "https://exposure.money/pay/" + token;
         output.classList.remove("placeholder");
+        copyBtn.disabled = false;
+      }
+
+      function copy() {
+        if (copyBtn.disabled) return;
+        var text = output.textContent;
+        function done() {
+          copyBtn.textContent = "Copied";
+          setTimeout(function () { copyBtn.textContent = "Copy"; }, 1500);
+        }
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(done, fallback);
+        } else {
+          fallback();
+        }
+        function fallback() {
+          var ta = document.createElement("textarea");
+          ta.value = text;
+          ta.style.position = "fixed";
+          ta.style.opacity = "0";
+          document.body.appendChild(ta);
+          ta.select();
+          try { document.execCommand("copy"); done(); } catch (e) {}
+          document.body.removeChild(ta);
+        }
       }
 
       document.getElementById("generate").addEventListener("click", generate);
+      copyBtn.addEventListener("click", copy);
       [amountEl, usernameEl].forEach(function (el) {
         el.addEventListener("keydown", function (e) {
           if (e.key === "Enter") generate();
@@ -160,29 +184,30 @@
     })();
   </script>
 
-  <!-- Tabs -->
+  <!-- Flip card -->
   <script>
     (function () {
-      var tabs = Array.prototype.slice.call(document.querySelectorAll(".tab"));
-      function select(tab) {
-        tabs.forEach(function (t) {
-          var on = t === tab;
-          t.setAttribute("aria-selected", on ? "true" : "false");
-          t.tabIndex = on ? 0 : -1;
-          document.getElementById(t.getAttribute("aria-controls")).hidden = !on;
+      var card = document.getElementById("card");
+      var front = card.querySelector(".face--front");
+      var back = card.querySelector(".face--back");
+
+      function setFace(face) {
+        var isBack = face === "back";
+        card.classList.toggle("flipped", isBack);
+        front.inert = isBack;
+        back.inert = !isBack;
+        front.setAttribute("aria-hidden", isBack ? "true" : "false");
+        back.setAttribute("aria-hidden", isBack ? "false" : "true");
+        Array.prototype.forEach.call(card.querySelectorAll(".tab"), function (t) {
+          t.classList.toggle("is-active", t.dataset.face === face);
         });
       }
-      tabs.forEach(function (tab, i) {
-        tab.addEventListener("click", function () { select(tab); });
-        tab.addEventListener("keydown", function (e) {
-          var dir = e.key === "ArrowRight" ? 1 : e.key === "ArrowLeft" ? -1 : 0;
-          if (!dir) return;
-          e.preventDefault();
-          var next = tabs[(i + dir + tabs.length) % tabs.length];
-          next.focus();
-          select(next);
-        });
+
+      Array.prototype.forEach.call(card.querySelectorAll("[data-face]"), function (btn) {
+        btn.addEventListener("click", function () { setFace(btn.dataset.face); });
       });
+
+      setFace("front");
     })();
   </script>
 
